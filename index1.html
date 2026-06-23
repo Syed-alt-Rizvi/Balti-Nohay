@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BaltiNohay.xyz | Live Azadari Network</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            serif: ['Cinzel', 'serif'],
+          },
+          colors: {
+            themeDark: '#040406',
+            themeCard: '#09090d',
+            themeRed: '#8f1111',
+            themeRedHover: '#b51616',
+            themeGold: '#cca028',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background: radial-gradient(circle at top, #110404 0%, #040406 80%);
+    }
+
+    /* Sacred Text Header Animation & Glow */
+    .sacred-glow {
+      text-shadow: 0 0 15px rgba(220, 38, 38, 0.85), 0 0 30px rgba(220, 38, 38, 0.45);
+    }
+    
+    @keyframes marquee {
+      0% { transform: translate3d(100%, 0, 0); }
+      100% { transform: translate3d(-100%, 0, 0); }
+    }
+    .marquee-content {
+      display: inline-block;
+      white-space: nowrap;
+      animation: marquee 35s linear infinite;
+    }
+    .marquee-content:hover {
+      animation-play-state: paused;
+    }
+
+    /* Ambient Video Player Glow */
+    .modal-glowing-glow {
+      box-shadow: 0 0 50px -10px rgba(143, 17, 17, 0.35);
+    }
+
+    /* Search Match Highlighting */
+    .highlight {
+      background-color: rgba(204, 160, 40, 0.25);
+      color: #dfb73c;
+      border-radius: 2px;
+      padding: 0 2px;
+    }
+
+    /* Modern animations */
+    .fade-in {
+      animation: fadeIn 0.4s ease-out forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Custom scrollbar config */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #040406;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #14141d;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #8f1111;
+    }
+  </style>
+</head>
+<body class="text-zinc-300 font-sans min-h-screen flex flex-col justify-between selection:bg-themeRed selection:text-white">
+
+  <!-- TOP SACRED TICKER -->
+  <div class="bg-black/95 border-b border-themeRed/10 overflow-hidden py-3 relative z-50 backdrop-blur-sm">
+    <div class="w-full overflow-hidden flex items-center">
+      <div class="marquee-content flex gap-16 text-sm md:text-base font-serif tracking-[0.2em] text-red-500 font-black sacred-glow">
+        <span>YA HUSSAIN GAREEB(A.S)</span>
+        <span class="text-themeGold opacity-80">•</span>
+        <span>YA ABAL FAZL BAWAFA</span>
+        <span class="text-themeGold opacity-80">•</span>
+        <span>YA ZAINAB E KUBRA</span>
+        <span class="text-themeGold opacity-80">•</span>
+        <span>YA HUSSAIN GAREEB(A.S)</span>
+        <span class="text-themeGold opacity-80">•</span>
+        <span>YA ABAL FAZL BAWAFA</span>
+        <span class="text-themeGold opacity-80">•</span>
+        <span>YA ZAINAB E KUBRA</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- OWNER INFO BANNER (MOVED TO TOP) -->
+  <div class="bg-zinc-950 border-b border-zinc-900 py-3 px-4 relative z-40">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-center">
+      <div class="flex items-center justify-center gap-2.5">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span class="text-xs text-zinc-400 font-medium font-serif tracking-wide">
+          Made by <span class="text-themeGold font-sans font-bold">Syed Murtaza Rizvi</span>
+        </span>
+      </div>
+      <!-- Support Button Triggering QR Scanner Modal -->
+      <button onclick="openSupportModal()" class="bg-themeRed/10 hover:bg-themeRed/30 border border-themeRed/40 text-themeGold text-[11px] font-bold px-4 py-1.5 rounded-full flex items-center gap-1.5 transition-all shadow-md shadow-red-950/10">
+        <i class="fa-solid fa-heart text-red-500 text-[10px]"></i> Support My Work / Donation
+      </button>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="py-6 px-4 md:px-8 max-w-7xl w-full mx-auto">
+    <div class="flex flex-col lg:flex-row items-center justify-between gap-6 bg-zinc-950/40 border border-zinc-900/30 p-6 md:p-8 rounded-2xl backdrop-blur-md">
+      
+      <div class="text-center lg:text-left">
+        <div class="flex items-center justify-center lg:justify-start gap-2 mb-2">
+          <!-- Connection Pulse Badge -->
+          <span id="connectionBadgePulse" class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span id="connectionBadgeText" class="text-[10px] font-bold uppercase tracking-widest text-emerald-400">Live API Sync Active</span>
+        </div>
+        <h1 class="font-serif text-3xl md:text-5xl font-black tracking-wider text-white">
+          <span class="text-themeRed drop-shadow-[0_4px_12px_rgba(143,17,17,0.5)]">Balti</span>Nohay<span class="text-xs font-sans text-themeGold border border-themeGold/30 ml-2 px-2 py-0.5 rounded-full font-normal">XYZ</span>
+        </h1>
+        <p class="text-xs md:text-sm text-zinc-400 mt-2 max-w-xl font-light">
+          Real-time YouTube synchronization engine. Watch live uploads, search the entire global platform instantly, and stream with custom theater layouts.
+        </p>
+      </div>
+
+      <!-- INTERFACE CONTROLS -->
+      <div class="w-full lg:w-auto flex flex-col sm:flex-row gap-3 items-center">
+        <!-- Live Search Field -->
+        <div class="relative w-full sm:w-72">
+          <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-zinc-500">
+            <i class="fa-solid fa-magnifying-glass text-xs"></i>
+          </span>
+          <input 
+            type="text" 
+            id="searchField" 
+            placeholder="Type search terms in real-time..." 
+            class="w-full bg-zinc-900/50 border border-zinc-800/80 focus:border-themeRed focus:outline-none focus:ring-1 focus:ring-themeRed rounded-xl py-3 pl-10 pr-4 text-sm text-zinc-100 transition-all placeholder:text-zinc-600 font-medium"
+          >
+          <!-- Search loading indicator -->
+          <div id="searchLoadingSpinner" class="hidden absolute inset-y-0 right-0 pr-3.5 flex items-center">
+            <svg class="animate-spin h-4 w-4 text-themeGold" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Sort Select -->
+        <div class="relative w-full sm:w-48">
+          <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-themeGold">
+            <i class="fa-solid fa-arrow-down-up-across-line text-xs"></i>
+          </span>
+          <select 
+            id="sortYearSelect" 
+            class="w-full appearance-none bg-zinc-900/50 border border-zinc-800/80 focus:border-themeRed focus:outline-none focus:ring-1 focus:ring-themeRed rounded-xl py-3 pl-10 pr-10 text-sm text-zinc-100 cursor-pointer font-medium"
+          >
+            <option value="desc">Newest Uploads</option>
+            <option value="asc">Older Archives</option>
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-zinc-500">
+            <i class="fa-solid fa-chevron-down text-[10px]"></i>
+          </div>
+        </div>
+
+        <!-- Settings Cog for Custom API Keys -->
+        <button onclick="toggleSettingsDrawer()" class="bg-zinc-900/50 border border-zinc-800/80 text-zinc-400 hover:text-white p-3 rounded-xl transition-all" title="Developer settings">
+          <i class="fa-solid fa-gears text-sm"></i>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- NAVIGATION BAR -->
+  <nav class="sticky top-0 z-35 bg-themeDark/90 backdrop-blur-xl border-y border-zinc-900/80">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col gap-3">
+      
+      <!-- Primary tab switchers -->
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div class="flex gap-2 overflow-x-auto">
+          <button 
+            id="tab-all" 
+            onclick="switchTab('all')" 
+            class="nav-tab px-5 py-2.5 rounded-xl text-xs md:text-sm font-bold tracking-wide transition-all bg-themeRed text-white shadow-lg shadow-themeRed/20"
+          >
+            <i class="fa-solid fa-house-signal mr-1.5 animate-pulse"></i> Real-time Feed
+          </button>
+          <button 
+            id="tab-latest" 
+            onclick="switchTab('latest')" 
+            class="nav-tab px-5 py-2.5 rounded-xl text-xs md:text-sm font-bold tracking-wide transition-all text-zinc-400 hover:text-white hover:bg-zinc-900/50"
+          >
+            <i class="fa-solid fa-bolt mr-1.5"></i> 2025/2026 Releases
+          </button>
+          <button 
+            id="tab-reciter" 
+            onclick="switchTab('reciters')" 
+            class="nav-tab px-5 py-2.5 rounded-xl text-xs md:text-sm font-bold tracking-wide transition-all text-zinc-400 hover:text-white hover:bg-zinc-900/50"
+          >
+            <i class="fa-solid fa-users mr-1.5"></i> Reciters (Noha Khwaans)
+          </button>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <!-- Live Manual Synchronization Action -->
+          <button onclick="triggerManualSync()" class="text-xs font-semibold text-zinc-400 hover:text-white bg-zinc-900/80 border border-zinc-800/80 px-3.5 py-1.5 rounded-lg flex items-center gap-1.5 transition-all">
+            <i class="fa-solid fa-rotate text-[10px]"></i> Sync Live
+          </button>
+          <div class="text-[11px] text-zinc-500 font-medium hidden sm:block">
+            Loaded: <span id="totalCount" class="text-themeGold font-bold">0</span> records
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- MAIN GRAPHICAL VIEWPORT -->
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-8">
+    
+    <!-- Active Filter Alert Badge -->
+    <div id="filterIndicator" class="hidden items-center justify-between bg-zinc-950/60 border border-themeGold/10 px-5 py-3 rounded-xl mb-6">
+      <div class="flex items-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-themeGold animate-pulse"></span>
+        <span class="text-xs text-zinc-300 font-medium" id="filterIndicatorText">Reciter Filter Enabled</span>
+      </div>
+      <button onclick="clearReciterFilter()" class="text-xs font-bold text-red-500 hover:text-red-400 transition-colors flex items-center gap-1">
+        <i class="fa-solid fa-circle-xmark"></i> Clear Filter
+      </button>
+    </div>
+
+    <!-- MAIN DYNAMIC CONTENT CONTAINER -->
+    <div id="nohayGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 fade-in">
+      <!-- Injected dynamic content cards via JS -->
+    </div>
+
+    <!-- NOHA KHWAAN INDEX -->
+    <div id="recitersView" class="hidden fade-in">
+      <h2 class="font-serif text-2xl text-white mb-6 tracking-wider text-center">Noha Khwaans Listed</h2>
+      <div id="recitersGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+    </div>
+
+    <!-- EMPTY VIEW -->
+    <div id="emptyState" class="hidden flex-col items-center justify-center py-20 text-center">
+      <div class="h-14 w-14 bg-zinc-900/40 rounded-full flex items-center justify-center border border-zinc-800 mb-4">
+        <i class="fa-regular fa-folder-open text-2xl text-zinc-600"></i>
+      </div>
+      <h3 class="text-base font-bold text-zinc-400">No Search Results Found</h3>
+      <p class="text-xs text-zinc-600 mt-1 max-w-xs">Try modifying your search text. Check spelling or try simpler keywords.</p>
+    </div>
+
+  </main>
+
+  <!-- DEVELOPER CONFIG DRAWER -->
+  <div id="settingsDrawer" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex justify-end hidden opacity-0 transition-opacity duration-300">
+    <div class="w-full max-w-md bg-themeCard h-full border-l border-zinc-800/80 p-6 flex flex-col justify-between shadow-2xl">
+      <div>
+        <div class="flex items-center justify-between pb-6 border-b border-zinc-900">
+          <h3 class="font-serif text-lg text-white font-bold tracking-wide">Developer & Node Settings</h3>
+          <button onclick="toggleSettingsDrawer()" class="text-zinc-400 hover:text-white p-2 rounded-full transition-all text-xl"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        
+        <div class="mt-6 space-y-4">
+          <div>
+            <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-2">Live Node Connection URL</label>
+            <input type="text" id="nodeUrlInput" placeholder="https://yewtu.be" class="w-full bg-zinc-950 border border-zinc-900 focus:border-themeRed focus:outline-none rounded-xl py-2 px-3.5 text-xs text-white">
+            <p class="text-[10px] text-zinc-500 mt-1">This site uses public CORS-enabled search nodes to pull data in real-time from YouTube.</p>
+          </div>
+          
+          <div>
+            <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-2">Custom Google YouTube v3 Key (Optional)</label>
+            <input type="password" id="apiKeyInput" placeholder="Paste AIzaSy..." class="w-full bg-zinc-950 border border-zinc-900 focus:border-themeRed focus:outline-none rounded-xl py-2 px-3.5 text-xs text-white">
+            <p class="text-[10px] text-zinc-500 mt-1">Enter your custom Google YouTube API key to override public nodes and activate dedicated endpoints.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-6 border-t border-zinc-900 flex gap-2">
+        <button onclick="saveSettings()" class="flex-grow bg-themeRed text-white text-xs font-bold py-2.5 rounded-xl hover:bg-themeRedHover transition-all">Save Config</button>
+        <button onclick="resetSettings()" class="px-4 bg-zinc-900 text-zinc-400 text-xs font-bold py-2.5 rounded-xl hover:text-white transition-all">Reset</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIDEO MODAL PLAYER -->
+  <div id="videoModal" class="fixed inset-0 bg-black/95 backdrop-blur-md z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+    <div class="relative w-full max-w-4xl mx-4 bg-themeCard border border-zinc-800/50 rounded-2xl overflow-hidden shadow-2xl modal-glowing-glow transition-all duration-300">
+      
+      <!-- Video Header Bar -->
+      <div class="flex items-center justify-between px-5 py-4 bg-zinc-950/90 border-b border-zinc-900">
+        <div class="flex items-center gap-2.5 max-w-[80%]">
+          <i class="fa-brands fa-youtube text-themeRed text-lg animate-pulse"></i>
+          <h3 id="modalTitle" class="text-xs md:text-sm font-bold text-white truncate">Balti Noha Player</h3>
+        </div>
+        <div class="flex items-center gap-2">
+          <!-- Theater Mode option -->
+          <button onclick="toggleTheaterMode()" class="text-zinc-500 hover:text-white p-2 text-xs" title="Toggle Theater Mode"><i class="fa-solid fa-expand"></i></button>
+          <button onclick="closeModal()" class="text-zinc-400 hover:text-white hover:bg-zinc-900 p-2 rounded-full transition-all text-xl focus:outline-none"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+      </div>
+
+      <!-- Native Browser Iframe Container -->
+      <div class="w-full aspect-video relative bg-black">
+        
+        <!-- Loading Spinner -->
+        <div id="playerSpinner" class="absolute inset-0 flex flex-col items-center justify-center bg-zinc-950 z-20 transition-opacity duration-300">
+          <svg class="animate-spin h-10 w-10 text-themeRed mb-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+          <span class="text-[10px] text-zinc-500 font-semibold tracking-wider uppercase">Decoding Live Stream...</span>
+        </div>
+
+        <iframe 
+          id="youtubeIframe" 
+          class="absolute top-0 left-0 w-full h-full border-0 rounded-b-2xl" 
+          src="" 
+          title="In-Web Video stream decoder" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          allowfullscreen
+        ></iframe>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- UPI DONATION / QR SCANNER MODAL -->
+  <div id="supportModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+    <div class="relative w-full max-w-sm mx-4 bg-zinc-950 border border-zinc-800/80 rounded-2xl p-6 text-center shadow-2xl modal-glowing-glow">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="font-serif text-lg text-white font-bold tracking-wide text-left">Support My Work</h3>
+        <button onclick="closeSupportModal()" class="text-zinc-500 hover:text-white transition-all text-lg"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <!-- Description Statement -->
+      <p class="text-xs text-zinc-400 mb-6 italic leading-relaxed">
+        "help me with more such projects,Jazakallah"
+      </p>
+
+      <!-- Dynamic QR Code Container -->
+      <div class="bg-white p-4 rounded-xl inline-block mb-6 shadow-inner border border-zinc-800/20">
+        <img 
+          id="upiQrImage" 
+          src="" 
+          alt="Scan to pay via UPI" 
+          class="w-48 h-48 mx-auto"
+        >
+      </div>
+
+      <!-- UPI Details -->
+      <div class="bg-zinc-900/60 border border-zinc-800/80 rounded-xl p-3 flex items-center justify-between mb-2">
+        <div class="text-left truncate pr-2">
+          <span class="text-[9px] uppercase tracking-wider text-zinc-500 block font-bold">UPI ID</span>
+          <span id="upiIdValue" class="text-xs text-themeGold font-bold truncate block">9906275833@superyes</span>
+        </div>
+        <button onclick="copyUpiId()" class="bg-themeRed hover:bg-themeRedHover text-white text-[10px] font-bold px-3 py-1.5 rounded-lg transition-all flex items-center gap-1">
+          <i class="fa-regular fa-copy"></i> Copy
+        </button>
+      </div>
+      <p id="copyConfirmation" class="text-[10px] text-emerald-500 opacity-0 transition-opacity duration-300 font-semibold">UPI ID copied to clipboard!</p>
+    </div>
+  </div>
+
+  <!-- STATIC FOOTER -->
+  <footer class="bg-black/60 border-t border-zinc-900/60 py-8 px-4">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+      <div>
+        <p class="text-[10px] text-zinc-600 uppercase tracking-widest font-bold font-sans">Digital Preservation Archive</p>
+        <p class="text-xs text-zinc-500 mt-1">&copy; 2026 BaltiNohay.xyz. Real-time dynamic indexing.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- DYNAMIC CORE ENGINE -->
+  <script>
+    /**
+     * Backup dataset used as cache fallback when public APIs fail.
+     */
+    let liveDatabase = [
+      { id: "v1", title: "Mehdi Purikpa | Heart Touching Balti Noha 2026 | Ya Hussain A.S", reciter: "Mehdi Purikpa", year: 2026, youtubeId: "Iz6zwSxuEfo", category: "Imam Hussain (as)" },
+      { id: "v2", title: "Balti Noha Ali Akbar a.s - Haye Haye Anoay Akbar", reciter: "Aqeel Iqbal", year: 2026, youtubeId: "0ESTQd6y_AM", category: "Hazrat Ali Akbar (as)" },
+      { id: "v3", title: "New Balti Noha || Zeri Skat Che Sakina س La", reciter: "Raza Shigri", year: 2026, youtubeId: "vBqJ7jW07kQ", category: "Bibi Sakina (sa)" },
+      { id: "v4", title: "Balti Noha Bibi Sakina (س) || Sakina La Rasan Taangsay", reciter: "Kamran Shigri", year: 2024, youtubeId: "fgVZbUrUZQg", category: "Bibi Sakina (sa)" },
+      { id: "v5", title: "Balti Noha Ali Akbar a.s - 09 Studio Skardu", reciter: "Shani Baltistani", year: 2026, youtubeId: "9Hj6q79Ibr0", category: "Hazrat Ali Akbar (as)" },
+      { id: "v6", title: "CHELUM LA RGIALMO ZAINAB (س) || Chehlum Special", reciter: "Hasan Ali Asadi", year: 2025, youtubeId: "8qU1Z-z-UfM", category: "Traditional" },
+      { id: "v7", title: "Balti Qadeemi Noha Ali Akbar a.s - Shibh e Paighambar Shah Akbar a.s", reciter: "M Hasnain Kharmangi", year: 2026, youtubeId: "pQK6iw6r63w", category: "Hazrat Ali Akbar (as)" },
+      { id: "v8", title: "Balti Noha Bibi sakina s.a - Ni Baxunxay Yang Gaar Yod", reciter: "Aoun Muhammad", year: 2025, youtubeId: "j5ugPs9zLf0", category: "Bibi Sakina (sa)" }
+    ];
+
+    // State
+    let activeTab = 'all'; 
+    let selectedReciter = null; 
+    let searchFilter = '';
+    let sortYearDirection = 'desc'; 
+    let searchTimeout = null;
+
+    // Public Invidious Nodes for CORS-less Scraping
+    const defaultInvidiousInstances = [
+      "https://yewtu.be",
+      "https://invidious.projectsegfau.lt",
+      "https://inv.tux.im",
+      "https://invidious.nerdvpn.de"
+    ];
+    let selectedInstance = localStorage.getItem('node_url') || defaultInvidiousInstances[0];
+    let customApiKey = localStorage.getItem('custom_api_key') || "";
+
+    // DOM Elements
+    const nohayGrid = document.getElementById('nohayGrid');
+    const recitersView = document.getElementById('recitersView');
+    const recitersGrid = document.getElementById('recitersGrid');
+    const emptyState = document.getElementById('emptyState');
+    const searchField = document.getElementById('searchField');
+    const sortYearSelect = document.getElementById('sortYearSelect');
+    const filterIndicator = document.getElementById('filterIndicator');
+    const filterIndicatorText = document.getElementById('filterIndicatorText');
+    const videoModal = document.getElementById('videoModal');
+    const youtubeIframe = document.getElementById('youtubeIframe');
+    const modalTitle = document.getElementById('modalTitle');
+    const playerSpinner = document.getElementById('playerSpinner');
+    const totalCountText = document.getElementById('totalCount');
+    const searchLoadingSpinner = document.getElementById('searchLoadingSpinner');
+    const connectionBadgePulse = document.getElementById('connectionBadgePulse');
+    const connectionBadgeText = document.getElementById('connectionBadgeText');
+    const settingsDrawer = document.getElementById('settingsDrawer');
+    const nodeUrlInput = document.getElementById('nodeUrlInput');
+    const apiKeyInput = document.getElementById('apiKeyInput');
+    const supportModal = document.getElementById('supportModal');
+    const upiQrImage = document.getElementById('upiQrImage');
+    const upiIdValue = document.getElementById('upiIdValue');
+    const copyConfirmation = document.getElementById('copyConfirmation');
+
+    document.addEventListener('DOMContentLoaded', () => {
+      totalCountText.textContent = liveDatabase.length;
+      
+      // Initialize settings inputs
+      nodeUrlInput.value = selectedInstance;
+      apiKeyInput.value = customApiKey;
+
+      youtubeIframe.addEventListener('load', () => {
+        playerSpinner.classList.add('opacity-0');
+        setTimeout(() => playerSpinner.classList.add('hidden'), 300);
+      });
+
+      // Fetch Real-time data on startup
+      syncLiveYouTubeData('Balti Noha');
+
+      // Debounced search field tracker to prevent network flood
+      searchField.addEventListener('input', (e) => {
+        searchFilter = e.target.value.trim();
+        searchLoadingSpinner.classList.remove('hidden');
+        
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+          if (searchFilter.length > 2) {
+            syncLiveYouTubeData(searchFilter);
+          } else if (searchFilter.length === 0) {
+            syncLiveYouTubeData('Balti Noha');
+          } else {
+            searchLoadingSpinner.classList.add('hidden');
+            renderApp();
+          }
+        }, 600);
+      });
+
+      sortYearSelect.addEventListener('change', (e) => {
+        sortYearDirection = e.target.value;
+        renderApp();
+      });
+
+      // Pre-compile UPI QR code URL using standard parameters
+      compileUpiQr();
+    });
+
+    /**
+     * Real-time Fetch Synchronization Engine
+     */
+    async function syncLiveYouTubeData(queryTerm) {
+      updateConnectionStatus('syncing', 'Syncing YouTube Live...');
+      
+      try {
+        let items = [];
+
+        // Scenario A: Custom Google API key is configured
+        if (customApiKey) {
+          const order = sortYearDirection === 'desc' ? 'date' : 'relevance';
+          const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(queryTerm)}&type=video&maxResults=24&order=${order}&key=${customApiKey}`;
+          const res = await fetch(url);
+          if (!res.ok) throw new Error('Google API quota limit exceeded.');
+          const data = await res.json();
+          items = data.items.map(item => ({
+            id: item.id.videoId,
+            title: item.snippet.title,
+            reciter: extractReciter(item.snippet.title, item.snippet.channelTitle),
+            year: new Date(item.snippet.publishedAt).getFullYear(),
+            youtubeId: item.id.videoId,
+            category: determineCategory(item.snippet.title)
+          }));
+        } 
+        // Scenario B: Query dynamic public Invidious nodes
+        else {
+          const url = `${selectedInstance}/api/v1/search?q=${encodeURIComponent(queryTerm)}&type=video`;
+          const res = await fetch(url);
+          if (!res.ok) throw new Error('Invidious Node overloaded.');
+          const data = await res.json();
+          items = data.map(video => ({
+            id: video.videoId,
+            title: video.title,
+            reciter: extractReciter(video.title, video.author),
+            year: getYearFromRelativeTime(video.publishedText) || new Date().getFullYear(),
+            youtubeId: video.videoId,
+            category: determineCategory(video.title)
+          }));
+        }
+
+        if (items && items.length > 0) {
+          liveDatabase = items;
+          updateConnectionStatus('active', 'Live API Connection Active');
+        } else {
+          updateConnectionStatus('fallback', 'Viewing Offline Local Cache');
+        }
+
+      } catch (error) {
+        console.warn('Network API node bypassed. Loading local backup database.', error);
+        updateConnectionStatus('fallback', 'Viewing Offline Local Cache');
+      } finally {
+        searchLoadingSpinner.classList.add('hidden');
+        totalCountText.textContent = liveDatabase.length;
+        renderApp();
+      }
+    }
+
+    /**
+     * Interface Rendering Controllers
+     */
+    function renderApp() {
+      nohayGrid.classList.add('hidden');
+      recitersView.classList.add('hidden');
+      emptyState.classList.add('hidden');
+
+      if (selectedReciter) {
+        filterIndicator.classList.remove('hidden');
+        filterIndicator.classList.add('flex');
+        filterIndicatorText.innerHTML = `Filter Selected: <strong class="text-themeGold font-bold">${selectedReciter}</strong>`;
+      } else {
+        filterIndicator.classList.add('hidden');
+        filterIndicator.classList.remove('flex');
+      }
+
+      if (activeTab === 'reciters' && !selectedReciter) {
+        recitersView.classList.remove('hidden');
+        renderRecitersGrid();
+      } else {
+        nohayGrid.classList.remove('hidden');
+        renderNohasGrid();
+      }
+    }
+
+    /**
+     * Search parsing filters
+     */
+    function getFilteredNohay() {
+      let result = [...liveDatabase];
+
+      if (activeTab === 'latest') {
+        result = result.filter(item => item.year >= 2025);
+      }
+
+      if (selectedReciter) {
+        result = result.filter(item => item.reciter.toLowerCase() === selectedReciter.toLowerCase());
+      }
+
+      result.sort((a, b) => {
+        return sortYearDirection === 'desc' ? b.year - a.year : a.year - b.year;
+      });
+
+      return result;
+    }
+
+    function renderNohasGrid() {
+      const filteredData = getFilteredNohay();
+      nohayGrid.innerHTML = '';
+
+      if (filteredData.length === 0) {
+        emptyState.classList.remove('hidden');
+        emptyState.classList.add('flex');
+        return;
+      }
+
+      filteredData.forEach(noha => {
+        const thumbUrl = `https://img.youtube.com/vi/${noha.youtubeId}/hqdefault.jpg`;
+        const highlightedTitle = highlightMatch(noha.title, searchFilter);
+
+        const cardHTML = `
+          <div class="bg-themeCard/60 border border-zinc-900/60 hover:border-themeRed/40 rounded-2xl overflow-hidden group hover:shadow-xl hover:shadow-themeRed/5 transition-all duration-300 flex flex-col justify-between">
+            <div class="relative cursor-pointer overflow-hidden aspect-video bg-zinc-950" onclick="playVideo('${noha.youtubeId}', '${escapeHtml(noha.title)}')">
+              <img src="${thumbUrl}" alt="${escapeHtml(noha.title)}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500 opacity-90 group-hover:opacity-100" onerror="this.src='https://images.unsplash.com/photo-1518173946687-a4c8a383392e?q=80&w=640'">
+              <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <span class="w-12 h-12 rounded-full bg-themeRed flex items-center justify-center text-white text-sm shadow-xl scale-90 group-hover:scale-100 transition-transform duration-300">
+                  <i class="fa-solid fa-play ml-0.5"></i>
+                </span>
+              </div>
+              <span class="absolute top-3 left-3 bg-black/80 border border-zinc-800/60 px-2.5 py-0.5 rounded-full text-[9px] text-zinc-300 font-bold tracking-wide">${escapeHtml(noha.category)}</span>
+              <span class="absolute bottom-3 right-3 bg-black/80 border border-zinc-800/60 px-2.5 py-0.5 rounded-full text-[10px] text-themeGold font-bold">${noha.year}</span>
+            </div>
+            <div class="p-5 flex-grow flex flex-col justify-between">
+              <div>
+                <h3 class="font-bold text-zinc-100 text-sm line-clamp-2 leading-relaxed group-hover:text-white transition-colors cursor-pointer" onclick="playVideo('${noha.youtubeId}', '${escapeHtml(noha.title)}')">${highlightedTitle}</h3>
+                <button onclick="filterByReciter('${escapeHtml(noha.reciter)}')" class="text-xs text-zinc-400 hover:text-themeGold transition-colors mt-3 flex items-center gap-1.5">
+                  <i class="fa-solid fa-microphone-lines text-[10px] text-themeRed"></i> 
+                  <span class="font-semibold">${escapeHtml(noha.reciter)}</span>
+                </button>
+              </div>
+              <div class="mt-4 pt-3.5 border-t border-zinc-900/60 flex items-center justify-between">
+                <span class="text-[9px] text-zinc-600 font-bold tracking-wider">LIVE REPOSITORY</span>
+                <button onclick="playVideo('${noha.youtubeId}', '${escapeHtml(noha.title)}')" class="text-xs font-bold text-themeRed hover:text-themeRedHover flex items-center gap-1">Watch <i class="fa-solid fa-chevron-right text-[8px] mt-0.5"></i></button>
+              </div>
+            </div>
+          </div>
+        `;
+        nohayGrid.insertAdjacentHTML('beforeend', cardHTML);
+      });
+    }
+
+    function renderRecitersGrid() {
+      const reciters = [...new Set(liveDatabase.map(n => n.reciter))];
+      recitersGrid.innerHTML = '';
+
+      reciters.forEach(reciter => {
+        const count = liveDatabase.filter(n => n.reciter === reciter).length;
+        const cardHTML = `
+          <div onclick="filterByReciter('${escapeHtml(reciter)}')" class="bg-themeCard/40 border border-zinc-900/80 p-5 rounded-2xl text-center cursor-pointer hover:border-themeRed/30 hover:bg-themeCard transition-all duration-300 flex flex-col items-center justify-center group">
+            <div class="w-12 h-12 rounded-full bg-zinc-950 flex items-center justify-center mb-3 border border-zinc-900 group-hover:border-themeGold transition-colors">
+              <i class="fa-solid fa-microphone-lines text-base text-zinc-500 group-hover:text-themeGold transition-colors"></i>
+            </div>
+            <h4 class="font-bold text-zinc-200 tracking-wide group-hover:text-white transition-colors text-xs">${escapeHtml(reciter)}</h4>
+            <span class="text-[10px] text-zinc-500 mt-1 font-medium bg-zinc-950 px-2.5 py-0.5 rounded-full border border-zinc-900/60">${count} Kalam entries</span>
+          </div>
+        `;
+        recitersGrid.insertAdjacentHTML('beforeend', cardHTML);
+      });
+    }
+
+    /**
+     * Parsing algorithms
+     */
+    function extractReciter(title, author) {
+      const delimiters = [/[|\-–]/];
+      let splitParts = [];
+      
+      for (let delimiter of delimiters) {
+        if (title.match(delimiter)) {
+          splitParts = title.split(delimiter);
+          break;
+        }
+      }
+
+      if (splitParts.length > 0) {
+        const first = splitParts[0].trim();
+        const second = splitParts[1].trim();
+        if (first.toLowerCase().includes("noha") || first.toLowerCase().includes("balti") || first.toLowerCase().includes("studio")) {
+          return second.substring(0, 24);
+        }
+        return first.substring(0, 24);
+      }
+      return author ? author.replace(/Official|Studio|Records/gi, '').trim().substring(0, 24) : "Traditional";
+    }
+
+    function determineCategory(title) {
+      const raw = title.toLowerCase();
+      if (raw.includes("abbas") || raw.includes("ghazi") || raw.includes("alamdar")) return "Hazrat Abbas (as)";
+      if (raw.includes("sakina") || raw.includes("yateem")) return "Bibi Sakina (sa)";
+      if (raw.includes("akbar")) return "Hazrat Ali Akbar (as)";
+      if (raw.includes("zainab") || raw.includes("sajjad")) return "Ayyam-e-Aza";
+      return "Imam Hussain (as)";
+    }
+
+    function getYearFromRelativeTime(relativeStr) {
+      if (!relativeStr) return null;
+      const match = relativeStr.match(/(\d+)\s+year/);
+      if (match) {
+        return new Date().getFullYear() - parseInt(match[1]);
+      }
+      return new Date().getFullYear();
+    }
+
+    function highlightMatch(text, query) {
+      if (!query) return escapeHtml(text);
+      const escapedQuery = query.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+      const regex = new RegExp(`(${escapedQuery})`, 'gi');
+      return escapeHtml(text).replace(regex, '<span class="highlight">$1</span>');
+    }
+
+    /**
+     * Interface Navigation Interactions
+     */
+    function switchTab(tabId) {
+      activeTab = tabId;
+      selectedReciter = null; 
+      document.querySelectorAll('.nav-tab').forEach(tab => {
+        tab.classList.remove('bg-themeRed', 'text-white', 'shadow-lg', 'shadow-themeRed/20');
+        tab.classList.add('text-zinc-400', 'hover:text-white', 'hover:bg-zinc-900/50');
+      });
+      const targetBtnId = tabId === 'reciters' ? 'tab-reciter' : `tab-${tabId}`;
+      const activeBtn = document.getElementById(targetBtnId);
+      if (activeBtn) {
+        activeBtn.classList.remove('text-zinc-400', 'hover:text-white', 'hover:bg-zinc-900/50');
+        activeBtn.classList.add('bg-themeRed', 'text-white', 'shadow-lg', 'shadow-themeRed/20');
+      }
+      renderApp();
+    }
+
+    function filterByReciter(reciterName) {
+      selectedReciter = reciterName;
+      activeTab = 'all';
+      switchTab('all');
+    }
+
+    function clearReciterFilter() {
+      selectedReciter = null;
+      renderApp();
+    }
+
+    function triggerManualSync() {
+      const q = searchField.value.trim() || 'Balti Noha';
+      syncLiveYouTubeData(q);
+    }
+
+    function updateConnectionStatus(state, message) {
+      connectionBadgePulse.className = "h-2 w-2 rounded-full";
+      connectionBadgeText.textContent = message;
+
+      if (state === 'active') {
+        connectionBadgePulse.classList.add('bg-emerald-500', 'animate-pulse');
+        connectionBadgeText.className = "text-[10px] font-bold uppercase tracking-widest text-emerald-400";
+      } else if (state === 'syncing') {
+        connectionBadgePulse.classList.add('bg-themeGold', 'animate-spin');
+        connectionBadgeText.className = "text-[10px] font-bold uppercase tracking-widest text-themeGold";
+      } else {
+        connectionBadgePulse.classList.add('bg-red-500');
+        connectionBadgeText.className = "text-[10px] font-bold uppercase tracking-widest text-red-500";
+      }
+    }
+
+    /**
+     * Developer Config Panel
+     */
+    function toggleSettingsDrawer() {
+      if (settingsDrawer.classList.contains('hidden')) {
+        settingsDrawer.classList.remove('hidden');
+        setTimeout(() => {
+          settingsDrawer.classList.remove('opacity-0');
+        }, 50);
+      } else {
+        settingsDrawer.classList.add('opacity-0');
+        setTimeout(() => {
+          settingsDrawer.classList.add('hidden');
+        }, 300);
+      }
+    }
+
+    function saveSettings() {
+      const nodeUrl = nodeUrlInput.value.trim();
+      const apiKey = apiKeyInput.value.trim();
+      
+      if (nodeUrl) {
+        selectedInstance = nodeUrl;
+        localStorage.setItem('node_url', nodeUrl);
+      }
+      localStorage.setItem('custom_api_key', apiKey);
+      customApiKey = apiKey;
+
+      toggleSettingsDrawer();
+      triggerManualSync();
+    }
+
+    function resetSettings() {
+      localStorage.removeItem('node_url');
+      localStorage.removeItem('custom_api_key');
+      selectedInstance = defaultInvidiousInstances[0];
+      customApiKey = "";
+      nodeUrlInput.value = selectedInstance;
+      apiKeyInput.value = "";
+      toggleSettingsDrawer();
+      triggerManualSync();
+    }
+
+    /**
+     * Support & Donation System (QR + Copy)
+     */
+    function compileUpiQr() {
+      const targetUpi = "9906275833@superyes";
+      const payeeName = "Syed Murtaza Rizvi";
+      const transactionNote = "help me with more such projects,Jazakallah";
+      
+      const upiUrl = `upi://pay?pa=${encodeURIComponent(targetUpi)}&pn=${encodeURIComponent(payeeName)}&tn=${encodeURIComponent(transactionNote)}`;
+      
+      // Use standard free qrserver API to render barcode scan matrix
+      upiQrImage.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiUrl)}`;
+    }
+
+    function openSupportModal() {
+      supportModal.classList.remove('hidden');
+      setTimeout(() => {
+        supportModal.classList.remove('opacity-0');
+        supportModal.classList.add('opacity-100');
+      }, 50);
+    }
+
+    function closeSupportModal() {
+      supportModal.classList.remove('opacity-100');
+      supportModal.classList.add('opacity-0');
+      setTimeout(() => {
+        supportModal.classList.add('hidden');
+        copyConfirmation.classList.add('opacity-0');
+      }, 300);
+    }
+
+    function copyUpiId() {
+      const targetUpiText = "9906275833@superyes";
+      
+      navigator.clipboard.writeText(targetUpiText).then(() => {
+        copyConfirmation.classList.remove('opacity-0');
+        copyConfirmation.classList.add('opacity-100');
+        setTimeout(() => {
+          copyConfirmation.classList.remove('opacity-100');
+          copyConfirmation.classList.add('opacity-0');
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy text: ', err);
+      });
+    }
+
+    /**
+     * Video Modal Playback Overlays
+     */
+    function playVideo(youtubeId, title) {
+      modalTitle.textContent = title;
+      playerSpinner.classList.remove('hidden');
+      playerSpinner.classList.remove('opacity-0');
+      playerSpinner.classList.add('opacity-100');
+      youtubeIframe.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0&modestbranding=1&enablejsapi=1`;
+      videoModal.classList.remove('hidden');
+      setTimeout(() => {
+        videoModal.classList.remove('opacity-0');
+        videoModal.classList.add('opacity-100');
+      }, 50);
+    }
+
+    function closeModal() {
+      videoModal.classList.remove('opacity-100');
+      videoModal.classList.add('opacity-0');
+      setTimeout(() => {
+        videoModal.classList.add('hidden');
+        youtubeIframe.src = '';
+      }, 300);
+    }
+
+    function toggleTheaterMode() {
+      const innerModal = videoModal.querySelector('.relative');
+      if (innerModal.classList.contains('max-w-4xl')) {
+        innerModal.classList.remove('max-w-4xl');
+        innerModal.classList.add('max-w-full', 'mx-0');
+      } else {
+        innerModal.classList.add('max-w-4xl');
+        innerModal.classList.remove('max-w-full', 'mx-0');
+      }
+    }
+
+    window.addEventListener('click', (e) => {
+      if (e.target === videoModal) {
+        closeModal();
+      }
+      if (e.target === settingsDrawer) {
+        toggleSettingsDrawer();
+      }
+      if (e.target === supportModal) {
+        closeSupportModal();
+      }
+    });
+
+    function escapeHtml(unsafe) {
+      return unsafe
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+  </script>
+</body>
+</html>
