@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BaltiNohay.xyz | Directory of Balti Azadari</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts for Elegant Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Cinzel', 'serif'],
+          },
+          colors: {
+            themeDark: '#0a0a0c',
+            themeCharcoal: '#121216',
+            themeRed: '#8b1e1e',
+            themeGold: '#d4af37',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Glowing Sacred Text Header Styles */
+    .sacred-glow {
+      text-shadow: 0 0 10px rgba(239, 68, 68, 0.8), 0 0 20px rgba(239, 68, 68, 0.4);
+    }
+    
+    /* Elegant Scrolling Text Marquee */
+    @keyframes marquee {
+      0% { transform: translate3d(100%, 0, 0); }
+      100% { transform: translate3d(-100%, 0, 0); }
+    }
+    .marquee-content {
+      display: inline-block;
+      white-space: nowrap;
+      animation: marquee 30s linear infinite;
+    }
+    .marquee-content:hover {
+      animation-play-state: paused;
+    }
+
+    /* Custom Scrollbar for dark theme */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0a0a0c;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #27272a;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #8b1e1e;
+    }
+  </style>
+</head>
+<body class="bg-themeDark text-gray-200 font-sans min-height-screen flex flex-col justify-between selection:bg-themeRed selection:text-white">
+
+  <!-- TOP ANIMATED SACRED BANNER -->
+  <div class="bg-black border-b border-red-950 overflow-hidden py-3 relative z-50 shadow-lg shadow-red-950/20">
+    <div class="w-full overflow-hidden flex items-center">
+      <div class="marquee-content flex gap-12 text-sm md:text-base font-serif tracking-widest text-red-500 font-bold sacred-glow">
+        <span>YA HUSSAIN GAREEB(A.S)</span>
+        <span class="text-themeGold">•</span>
+        <span>YA ABAL FAZL BAWAFA</span>
+        <span class="text-themeGold">•</span>
+        <span>YA ZAINAB E KUBRA</span>
+        <span class="text-themeGold">•</span>
+        <span>YA HUSSAIN GAREEB(A.S)</span>
+        <span class="text-themeGold">•</span>
+        <span>YA ABAL FAZL BAWAFA</span>
+        <span class="text-themeGold">•</span>
+        <span>YA ZAINAB E KUBRA</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN HEADER / BRANDING -->
+  <header class="bg-themeCharcoal border-b border-zinc-800 py-8 px-4 md:px-8 shadow-md">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="text-center md:text-left">
+        <h1 class="font-serif text-3xl md:text-5xl font-black text-white tracking-wider flex items-center justify-center md:justify-start gap-3">
+          <span class="text-themeRed drop-shadow-[0_2px_8px_rgba(139,30,30,0.5)]">Balti</span>Nohay<span class="text-xs text-themeGold font-sans border border-themeGold/30 px-1.5 py-0.5 rounded tracking-normal">XYZ</span>
+        </h1>
+        <p class="text-xs md:text-sm text-gray-400 mt-2 font-serif tracking-wide">
+          A dedicated directory for preserving and sharing traditional Balti Azadari and mourning literature
+        </p>
+      </div>
+
+      <!-- Live Search & Sort Control -->
+      <div class="w-full md:w-auto flex flex-col sm:flex-row gap-3 items-center">
+        <!-- Search bar -->
+        <div class="relative w-full sm:w-64">
+          <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </span>
+          <input 
+            type="text" 
+            id="searchField" 
+            placeholder="Search Title or Reciter..." 
+            class="w-full bg-zinc-900 border border-zinc-800 focus:border-themeRed focus:outline-none rounded-lg py-2 pl-9 pr-4 text-sm text-gray-200 transition-all placeholder:text-gray-500"
+          >
+        </div>
+
+        <!-- Sort by Year Select -->
+        <div class="relative w-full sm:w-48">
+          <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-themeGold">
+            <i class="fa-solid fa-calendar-days"></i>
+          </span>
+          <select 
+            id="sortYearSelect" 
+            class="w-full appearance-none bg-zinc-900 border border-zinc-800 focus:border-themeRed focus:outline-none rounded-lg py-2 pl-9 pr-8 text-sm text-gray-200 cursor-pointer transition-all"
+          >
+            <option value="desc">Newest First</option>
+            <option value="asc">Oldest First</option>
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-400">
+            <i class="fa-solid fa-chevron-down text-xs"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAVIGATION TABS -->
+  <nav class="bg-zinc-950 py-3 border-b border-zinc-900 sticky top-0 z-40 backdrop-blur bg-opacity-95">
+    <div class="max-w-7xl mx-auto px-4 flex justify-center gap-2 md:gap-4 overflow-x-auto">
+      <button 
+        id="tab-all" 
+        onclick="switchTab('all')" 
+        class="nav-tab px-5 py-2 rounded-full text-sm font-semibold tracking-wide transition-all bg-themeRed text-white"
+      >
+        <i class="fa-solid fa-bars-staggered mr-2"></i> All Nohas
+      </button>
+      <button 
+        id="tab-latest" 
+        onclick="switchTab('latest')" 
+        class="nav-tab px-5 py-2 rounded-full text-sm font-semibold tracking-wide transition-all text-gray-400 hover:text-white hover:bg-zinc-900"
+      >
+        <i class="fa-solid fa-bullhorn mr-2"></i> Latest Releases
+      </button>
+      <button 
+        id="tab-reciter" 
+        onclick="switchTab('reciters')" 
+        class="nav-tab px-5 py-2 rounded-full text-sm font-semibold tracking-wide transition-all text-gray-400 hover:text-white hover:bg-zinc-900"
+      >
+        <i class="fa-solid fa-microphone-lines mr-2"></i> Noha Khwaan Directory
+      </button>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-8 md:py-12">
+    
+    <!-- Active Filters Alert (hidden by default) -->
+    <div id="filterIndicator" class="hidden items-center justify-between bg-zinc-900 border-l-4 border-themeGold px-4 py-3 rounded mb-8">
+      <span class="text-sm text-gray-300" id="filterIndicatorText">Showing Nohas by Reciter: ...</span>
+      <button onclick="clearReciterFilter()" class="text-xs font-bold text-red-500 hover:underline">
+        <i class="fa-solid fa-circle-xmark mr-1"></i> Clear Filter
+      </button>
+    </div>
+
+    <!-- MAIN GRID CONTAINER -->
+    <div id="nohayGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <!-- Cards rendered programmatically via JavaScript -->
+    </div>
+
+    <!-- RECITER DIRECTORY VIEW (Hidden by default, shown when clicking Noha Khwaan Tab) -->
+    <div id="recitersView" class="hidden">
+      <h2 class="font-serif text-2xl text-center text-white mb-8 tracking-wider">Browse by Noha Khwaan (Reciter)</h2>
+      <div id="recitersGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <!-- Reciters cards dynamically generated -->
+      </div>
+    </div>
+
+    <!-- Empty State -->
+    <div id="emptyState" class="hidden flex-col items-center justify-center py-16 text-center">
+      <i class="fa-regular fa-folder-open text-5xl text-zinc-700 mb-4"></i>
+      <h3 class="text-lg font-bold text-gray-400">No Nohas Found</h3>
+      <p class="text-sm text-gray-600 mt-1">Please try modifying your search or filters.</p>
+    </div>
+
+  </main>
+
+  <!-- VIDEO EMBED MODAL POPUP -->
+  <div id="videoModal" class="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+    <div class="relative w-full max-w-4xl mx-4 bg-zinc-950 border border-zinc-800 rounded-xl overflow-hidden shadow-2xl">
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between px-4 py-3 bg-zinc-900 border-b border-zinc-800">
+        <h3 id="modalTitle" class="text-sm md:text-base font-bold text-white truncate max-w-[80%]">Balti Noha Title</h3>
+        <button onclick="closeModal()" class="text-gray-400 hover:text-white transition-all text-xl p-1 focus:outline-none">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <!-- Responsive Video Player -->
+      <div class="relative pb-[56.25%] h-0">
+        <iframe 
+          id="youtubeIframe" 
+          class="absolute top-0 left-0 w-full h-full" 
+          src="" 
+          title="YouTube video player" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATIC BANNER FOOTER -->
+  <footer class="bg-zinc-950 border-t border-zinc-900 py-6 px-4">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center">
+      <p class="text-xs text-gray-500">
+        &copy; 2026 BaltiNohay.xyz. Dedicated to the digital preservation of Balti Nohay literature.
+      </p>
+      <!-- Syed Murtaza Rizvi Static Banner -->
+      <div class="bg-zinc-900/80 border border-zinc-800 rounded-full py-1.5 px-5 flex items-center gap-2 shadow shadow-black">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span class="text-xs font-semibold tracking-wider text-gray-300 font-serif">
+          Made by <span class="text-themeGold font-sans font-bold">Syed Murtaza Rizvi</span>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BACKEND / CONTROLLER JAVASCRIPT -->
+  <script>
+    /**
+     * Balti Azadari Mock Dataset
+     * This client-side dataset serves as our local "database" of YouTube URLs.
+     * Easy to expand by appending additional objects with correct YouTube Video IDs.
+     */
+    const nohayDatabase = [
+      {
+        id: "1",
+        title: "Khaq-e-Shifa - Balti Noha",
+        reciter: "Tehseen Baltistani",
+        year: 2024,
+        youtubeId: "vBqJ7jW07kQ", // Replace with actual Balti YouTube Video IDs
+        addedDate: "2024-10-12"
+      },
+      {
+        id: "2",
+        title: "Aye Karbala Aye Karbala",
+        reciter: "Sajjad Hussain Baltistani",
+        year: 2023,
+        youtubeId: "8qU1Z-z-UfM",
+        addedDate: "2023-08-05"
+      },
+      {
+        id: "3",
+        title: "Chogha e Ghurbat e Hussain",
+        reciter: "Basharat Baltistani",
+        year: 2022,
+        youtubeId: "FAt3nU_Dkhg",
+        addedDate: "2022-07-28"
+      },
+      {
+        id: "4",
+        title: "Zainab e Be Yar o Yawar",
+        reciter: "Reza Baltistani",
+        year: 2025,
+        youtubeId: "9S_jFz5nLhs",
+        addedDate: "2025-01-10"
+      },
+      {
+        id: "5",
+        title: "Ahl-e-Aza Balti Noha",
+        reciter: "Tehseen Baltistani",
+        year: 2025,
+        youtubeId: "h-g0CMy7eOk",
+        addedDate: "2025-02-15"
+      },
+      {
+        id: "6",
+        title: "Hussain Ya Hussain - Baltistan mourning",
+        reciter: "Syed Muhammad Rizvi",
+        year: 2024,
+        youtubeId: "qNscR3tS_1Q",
+        addedDate: "2024-09-01"
+      },
+      {
+        id: "7",
+        title: "Alvida Alvida Ya Hussain",
+        reciter: "Sajjad Hussain Baltistani",
+        year: 2021,
+        youtubeId: "0M6CunX32I8",
+        addedDate: "2021-08-19"
+      },
+      {
+        id: "8",
+        title: "Abbas Ghazi Bawafa Noha",
+        reciter: "Basharat Baltistani",
+        year: 2024,
+        youtubeId: "d6qMhA-Fas4",
+        addedDate: "2024-07-20"
+      }
+    ];
+
+    // Current app state variables
+    let activeTab = 'all'; // 'all' | 'latest' | 'reciters'
+    let selectedReciter = null; // Filter logic for reciters tab
+    let searchFilter = '';
+    let sortYearDirection = 'desc'; // 'desc' (Newest First) | 'asc' (Oldest First)
+
+    // DOM Selectors
+    const nohayGrid = document.getElementById('nohayGrid');
+    const recitersView = document.getElementById('recitersView');
+    const recitersGrid = document.getElementById('recitersGrid');
+    const emptyState = document.getElementById('emptyState');
+    const searchField = document.getElementById('searchField');
+    const sortYearSelect = document.getElementById('sortYearSelect');
+    const filterIndicator = document.getElementById('filterIndicator');
+    const filterIndicatorText = document.getElementById('filterIndicatorText');
+    const videoModal = document.getElementById('videoModal');
+    const youtubeIframe = document.getElementById('youtubeIframe');
+    const modalTitle = document.getElementById('modalTitle');
+
+    // Initialize application logic
+    document.addEventListener('DOMContentLoaded', () => {
+      renderApp();
+
+      // Search Event Listener
+      searchField.addEventListener('input', (e) => {
+        searchFilter = e.target.value.toLowerCase().trim();
+        renderApp();
+      });
+
+      // Sort Event Listener
+      sortYearSelect.addEventListener('change', (e) => {
+        sortYearDirection = e.target.value;
+        renderApp();
+      });
+    });
+
+    /**
+     * Master rendering routing function
+     */
+    function renderApp() {
+      // 1. Hide everything by default
+      nohayGrid.classList.add('hidden');
+      recitersView.classList.add('hidden');
+      emptyState.classList.add('hidden');
+
+      // Update Filter Banner UI
+      if (selectedReciter) {
+        filterIndicator.classList.remove('hidden');
+        filterIndicator.classList.add('flex');
+        filterIndicatorText.textContent = `Showing Nohas by Noha Khwaan: ${selectedReciter}`;
+      } else {
+        filterIndicator.classList.add('hidden');
+        filterIndicator.classList.remove('flex');
+      }
+
+      if (activeTab === 'reciters' && !selectedReciter) {
+        // Render reciters listing page
+        recitersView.classList.remove('hidden');
+        renderRecitersGrid();
+      } else {
+        // Render Noha video catalog grid
+        nohayGrid.classList.remove('hidden');
+        renderNohasGrid();
+      }
+    }
+
+    /**
+     * Filter and Sort logic before presentation
+     */
+    function getFilteredNohay() {
+      let result = [...nohayDatabase];
+
+      // Tab filtering
+      if (activeTab === 'latest') {
+        // "Latest Releases" - Filtered dynamically to items released within the last 2 years (e.g. >= 2024)
+        result = result.filter(item => item.year >= 2024);
+      }
+
+      // Reciter selection filtering
+      if (selectedReciter) {
+        result = result.filter(item => item.reciter.toLowerCase() === selectedReciter.toLowerCase());
+      }
+
+      // Search filter matching titles or reciter names
+      if (searchFilter) {
+        result = result.filter(item => 
+          item.title.toLowerCase().includes(searchFilter) || 
+          item.reciter.toLowerCase().includes(searchFilter)
+        );
+      }
+
+      // Sort logic
+      result.sort((a, b) => {
+        if (sortYearDirection === 'desc') {
+          return b.year - a.year; // Newer years first
+        } else {
+          return a.year - b.year; // Older years first
+        }
+      });
+
+      return result;
+    }
+
+    /**
+     * Render Video Grid UI
+     */
+    function renderNohasGrid() {
+      const filteredData = getFilteredNohay();
+      nohayGrid.innerHTML = '';
+
+      if (filteredData.length === 0) {
+        emptyState.classList.remove('hidden');
+        emptyState.classList.add('flex');
+        return;
+      }
+
+      filteredData.forEach(noha => {
+        // Standard high-quality YouTube thumbnail fallback architecture
+        const thumbUrl = `https://img.youtube.com/vi/${noha.youtubeId}/hqdefault.jpg`;
+        
+        const cardHTML = `
+          <div class="bg-zinc-900 border border-zinc-800/80 rounded-xl overflow-hidden group hover:border-themeRed/50 transition-all duration-300 hover:shadow-lg hover:shadow-red-950/20 flex flex-col justify-between">
+            <div class="relative cursor-pointer overflow-hidden aspect-video" onclick="playVideo('${noha.youtubeId}', '${escapeHtml(noha.title)}')">
+              <img 
+                src="${thumbUrl}" 
+                alt="${escapeHtml(noha.title)}" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                onerror="this.src='https://images.unsplash.com/photo-1518173946687-a4c8a383392e?q=80&w=640'"
+              >
+              <!-- Overlay play button visual -->
+              <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <span class="w-14 h-14 rounded-full bg-themeRed flex items-center justify-center text-white text-lg shadow-lg scale-90 group-hover:scale-100 transition-transform duration-300">
+                  <i class="fa-solid fa-play ml-1"></i>
+                </span>
+              </div>
+              <!-- Year Tag Badge -->
+              <span class="absolute bottom-2 right-2 bg-black/80 border border-zinc-800 px-2 py-0.5 rounded text-xs text-themeGold font-semibold">
+                ${noha.year}
+              </span>
+            </div>
+            
+            <div class="p-4 flex-grow flex flex-col justify-between">
+              <div>
+                <h3 class="font-bold text-gray-100 text-sm line-clamp-2 leading-snug group-hover:text-white transition-colors">
+                  ${escapeHtml(noha.title)}
+                </h3>
+                <button 
+                  onclick="filterByReciter('${escapeHtml(noha.reciter)}')" 
+                  class="text-xs text-gray-400 hover:text-themeGold transition-colors mt-2 flex items-center gap-1.5"
+                >
+                  <i class="fa-solid fa-microphone-lines text-[10px] text-themeRed"></i> 
+                  <span>${escapeHtml(noha.reciter)}</span>
+                </button>
+              </div>
+              <div class="mt-4 pt-3 border-t border-zinc-800/60 flex items-center justify-between">
+                <span class="text-[10px] text-gray-500">YouTube Directory Video</span>
+                <button 
+                  onclick="playVideo('${noha.youtubeId}', '${escapeHtml(noha.title)}')" 
+                  class="text-xs font-semibold text-themeRed hover:text-red-400 flex items-center gap-1"
+                >
+                  Watch Now <i class="fa-solid fa-angle-right text-[10px]"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+        nohayGrid.insertAdjacentHTML('beforeend', cardHTML);
+      });
+    }
+
+    /**
+     * Render the list of reciters dynamically
+     */
+    function renderRecitersGrid() {
+      // Extract unique list of reciters
+      const reciters = [...new Set(nohayDatabase.map(n => n.reciter))];
+      recitersGrid.innerHTML = '';
+
+      reciters.forEach(reciter => {
+        // Count how many Nohas they have
+        const count = nohayDatabase.filter(n => n.reciter === reciter).length;
+        
+        const cardHTML = `
+          <div 
+            onclick="filterByReciter('${escapeHtml(reciter)}')"
+            class="bg-zinc-900 border border-zinc-800/80 p-6 rounded-xl text-center cursor-pointer hover:border-themeGold/60 hover:bg-zinc-900 transition-all duration-300 flex flex-col items-center justify-center group"
+          >
+            <div class="w-16 h-16 rounded-full bg-zinc-800 flex items-center justify-center mb-3 border border-zinc-700 group-hover:border-themeGold transition-all">
+              <i class="fa-solid fa-user-tie text-2xl text-gray-400 group-hover:text-themeGold"></i>
+            </div>
+            <h3 class="font-serif font-bold text-white tracking-wide group-hover:text-themeGold transition-colors text-base">
+              ${escapeHtml(reciter)}
+            </h3>
+            <span class="text-xs text-zinc-500 mt-1">${count} Nohay Published</span>
+          </div>
+        `;
+        recitersGrid.insertAdjacentHTML('beforeend', cardHTML);
+      });
+    }
+
+    /**
+     * Tab Switching State Manager
+     */
+    function switchTab(tabId) {
+      activeTab = tabId;
+      selectedReciter = null; // Clear individual filters upon navigating tabs
+
+      // Reset Tab UI Active States
+      document.querySelectorAll('.nav-tab').forEach(tab => {
+        tab.classList.remove('bg-themeRed', 'text-white');
+        tab.classList.add('text-gray-400', 'hover:text-white', 'hover:bg-zinc-900');
+      });
+
+      const activeBtn = document.getElementById(`tab-${tabId === 'reciters' ? 'reciter' : tabId}`);
+      if (activeBtn) {
+        activeBtn.classList.remove('text-gray-400', 'hover:text-white', 'hover:bg-zinc-900');
+        activeBtn.classList.add('bg-themeRed', 'text-white');
+      }
+
+      renderApp();
+    }
+
+    /**
+     * Helper to filter by an individual reciter
+     */
+    function filterByReciter(reciterName) {
+      selectedReciter = reciterName;
+      renderApp();
+    }
+
+    /**
+     * Clear and Reset Reciter Filter
+     */
+    function clearReciterFilter() {
+      selectedReciter = null;
+      renderApp();
+    }
+
+    /**
+     * Video Player Modal logic
+     */
+    function playVideo(youtubeId, title) {
+      modalTitle.textContent = title;
+      // Using YouTube no-cookie parameter for privacy-focused embedded streaming
+      youtubeIframe.src = `https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&rel=0`;
+      
+      videoModal.classList.remove('hidden');
+      setTimeout(() => {
+        videoModal.classList.remove('opacity-0');
+        videoModal.classList.add('opacity-100');
+      }, 10);
+    }
+
+    function closeModal() {
+      videoModal.classList.remove('opacity-100');
+      videoModal.classList.add('opacity-0');
+      setTimeout(() => {
+        videoModal.classList.add('hidden');
+        // Setting src empty stops actual streaming playback immediately
+        youtubeIframe.src = '';
+      }, 300);
+    }
+
+    // Modal click out bounds event register
+    window.addEventListener('click', (e) => {
+      if (e.target === videoModal) {
+        closeModal();
+      }
+    });
+
+    /**
+     * Standard escape logic to secure dataset text elements
+     */
+    function escapeHtml(unsafe) {
+      return unsafe
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+  </script>
+</body>
+</html>
